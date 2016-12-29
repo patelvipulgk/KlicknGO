@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/parentactionscroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="55dp"
+        android:fillViewport="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="80dp"
+                android:id="@+id/relativeLayout">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:orientation="horizontal">
+
+
+                    <!-- Name Label -->
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="false"
+                        android:layout_weight="0.5"
+                        >
+                        <EditText android:id="@+id/firstnameet"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textCapWords"
+                            android:hint="First Name" />
+                    </android.support.design.widget.TextInputLayout>
+
+
+                    <!-- Name Label -->
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="false"
+                        android:layout_weight="0.5"
+                        >
+                        <EditText android:id="@+id/lastnameet"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textCapWords"
+                            android:hint="Last Name" />
+                    </android.support.design.widget.TextInputLayout>
+                </LinearLayout>
+            </RelativeLayout>
+
+
+            <!--  Email Label -->
+            <!--  <android.support.design.widget.TextInputLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_marginTop="8dp"
+                 android:layout_marginBottom="8dp"></android.support.design.widget.TextInputLayout>
+
+            <RelativeLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="60dp"
+                 android:layout_alignRight="@+id/relativeLayout"
+                 android:layout_alignEnd="@+id/relativeLayout"
+                 android:layout_below="@+id/relativeLayout"
+                 android:layout_alignLeft="@+id/relativeLayout"
+                 android:layout_alignStart="@+id/relativeLayout"
+                 android:id="@+id/relativeLayoutemail"
+                 >
+
+
+                 &lt;!&ndash; Name Label &ndash;&gt;
+                 <android.support.design.widget.TextInputLayout
+                     android:layout_width="0dp"
+                     android:layout_height="wrap_content"
+                     android:layout_alignParentTop="false"
+                     android:layout_alignParentRight="true"
+                     android:layout_alignParentEnd="true"
+                     android:layout_alignParentLeft="true"
+                     android:layout_alignParentStart="true">
+
+
+                     <EditText android:id="@+id/input_email"
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:inputType="textEmailAddress"
+                         android:hint="Email"
+                         android:layout_alignParentBottom="true"
+                         android:layout_centerHorizontal="true" />
+
+                 </android.support.design.widget.TextInputLayout>
+             </RelativeLayout>-->
+
+
+
+
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_alignRight="@+id/relativeLayout"
+                android:layout_alignEnd="@+id/relativeLayout"
+                android:layout_below="@+id/relativeLayout"
+                android:layout_alignLeft="@+id/relativeLayout"
+                android:layout_alignStart="@+id/relativeLayout"
+                android:id="@+id/relativeLayoutcountry"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:orientation="horizontal">
+
+
+
+                    <!-- &lt;!&ndash; Name Label &ndash;&gt;
+                     <android.support.design.widget.TextInputLayout
+                         android:layout_width="0dp"
+                         android:layout_height="wrap_content"
+                         android:layout_alignParentTop="false"
+                         android:layout_weight="0.2"
+                         >
+                         <EditText android:id="@+id/countrycode"
+                             android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:layout_weight="0.2"
+                             android:inputType="textCapWords"
+                             android:textSize="18sp"
+                             android:hint="Country" />
+                     </android.support.design.widget.TextInputLayout>
+    -->
+
+                    <!-- Name Label -->
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="false"
+                        android:layout_weight="0.5"
+                        >
+                        <EditText android:id="@+id/phoneet"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="phone"
+                            android:hint="Mobile" />
+                    </android.support.design.widget.TextInputLayout>
+                </LinearLayout>
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_alignRight="@+id/relativeLayoutcountry"
+                android:layout_alignEnd="@+id/relativeLayoutcountry"
+                android:layout_below="@+id/relativeLayoutcountry"
+                android:layout_alignLeft="@+id/relativeLayoutcountry"
+                android:layout_alignStart="@+id/relativeLayoutcountry"
+                android:id="@+id/relativeLayoutpassword"
+                >
+
+
+                <!-- Name Label -->
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true">
+
+
+                    <EditText android:id="@+id/genderet"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textCapWords"
+                        android:hint="Gender"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true" />
+
+                </android.support.design.widget.TextInputLayout>
+            </RelativeLayout>
+
+
+            <Button
+                android:id="@+id/btnRegister"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#01AB86"
+                android:text="Sign Up"
+                android:textAllCaps="false"
+                android:textSize="18sp"
+                android:textColor="@color/white"
+                android:layout_below="@+id/relativeLayoutpp"
+                android:layout_marginTop="30dp"
+                android:layout_alignLeft="@+id/dotted_view"
+                android:layout_alignStart="@+id/dotted_view"
+                android:layout_alignRight="@+id/relativeLayoutpp"
+                android:layout_alignEnd="@+id/relativeLayoutpp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Date of birth"
+                android:id="@+id/button"
+                android:paddingTop="15dp"
+                android:gravity="left|center"
+                android:paddingLeft="5dp"
+                android:textSize="18sp"
+                android:textColor="#8D8D8D"
+                android:textAllCaps="false"
+                android:background="@android:color/transparent"
+                android:layout_below="@+id/relativeLayoutpassword"
+                android:layout_alignLeft="@+id/relativeLayoutpassword"
+                android:layout_alignStart="@+id/relativeLayoutpassword"
+                android:layout_alignRight="@+id/relativeLayoutpassword"
+                android:layout_alignEnd="@+id/relativeLayoutpassword" />
+
+            <View
+                android:id="@+id/dotted_view"
+                android:layout_width="wrap_content"
+                android:layout_marginRight="3dp"
+                android:layout_marginLeft="3dp"
+                android:layout_height="1dp"
+                android:layout_alignLeft="@+id/button"
+                android:layout_alignRight="@+id/button"
+                android:background="#8D8D8D"
+                android:layout_below="@+id/button" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_alignRight="@+id/button"
+                android:layout_alignEnd="@+id/button"
+                android:layout_below="@+id/dotted_view"
+                android:layout_alignLeft="@+id/button"
+                android:layout_alignStart="@+id/button"
+                android:id="@+id/relativeLayoutp"
+                >
+
+
+                <!-- Name Label -->
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true">
+
+
+                    <EditText android:id="@+id/cityet"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textCapWords"
+                        android:hint="City"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true" />
+
+                </android.support.design.widget.TextInputLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_alignRight="@+id/relativeLayoutp"
+                android:layout_alignEnd="@+id/relativeLayoutp"
+                android:layout_below="@+id/relativeLayoutp"
+                android:layout_alignLeft="@+id/relativeLayoutp"
+                android:layout_alignStart="@+id/relativeLayoutp"
+                android:id="@+id/relativeLayoutpp"
+                >
+
+
+                <!-- Name Label -->
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true">
+
+
+                    <EditText android:id="@+id/countryet"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textCapWords"
+                        android:hint="Country"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true" />
+
+                </android.support.design.widget.TextInputLayout>
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Individual"
+                android:textColor="#01AB86"
+                android:textSize="28sp"
+                android:id="@+id/textView"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Register as a user"
+                android:id="@+id/textView2"
+                android:textSize="13sp"
+                android:textColor="@color/black"
+                android:layout_below="@+id/textView"
+                android:layout_centerHorizontal="true" />
+
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

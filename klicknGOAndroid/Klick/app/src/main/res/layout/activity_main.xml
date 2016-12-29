@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.harshank.klick.MainActivity">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="230dp"
+        android:scaleType="fitXY"
+        android:id="@+id/imageView"
+        android:src="@drawable/mainpagefirstimg"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="138dp"
+        android:scaleType="fitXY"
+        android:id="@+id/individualbtn"
+        android:src="@drawable/individualuserimg"
+        android:layout_below="@+id/imageView"
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="138dp"
+        android:id="@+id/merchantbtn"
+        android:scaleType="fitXY"
+        android:src="@drawable/merchantimg"
+        android:layout_below="@+id/individualbtn"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true" />
+</RelativeLayout>
