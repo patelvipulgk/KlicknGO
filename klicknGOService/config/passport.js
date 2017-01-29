@@ -20,5 +20,12 @@ module.exports = function(passport) {
           }
       });
   }));
+  return {
+        initialize: function() {
+            return passport.initialize();
+        },
+        authenticate: function() {
+            return passport.authenticate('jwt', { session : false });
+        }
+  };
 };
-

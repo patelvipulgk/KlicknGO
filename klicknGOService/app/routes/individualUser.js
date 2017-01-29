@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
 var IndividualUser = require("../models/individualUser");
-
+module.exports = function () {
 router.route('/individual/users')
 
 	//returns all IndividualUser
@@ -119,9 +119,11 @@ router.route("/individual/users/:id")
             }
         });
 	});
+
+};
 function handleError(res, reason, message, code) {
   console.log("ERROR: " + reason);
   res.status(code || 500).json({"error": message});
 }
 
-module.exports = router;
+//module.exports = router(isClientAuthenticated);
