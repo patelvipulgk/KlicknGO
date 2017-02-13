@@ -1,16 +1,19 @@
 var express     = require('express');
 var app         = express();
+var server      = require('http').createServer(app);
+var io          = require('socket.io')(server);
+var socketioJwt = require('socketio-jwt');
 var bodyParser  = require('body-parser');
 var morgan      = require('morgan');
 var mongoose    = require('mongoose');
-var passport	= require('passport');
+var passport	  = require('passport');
 var config      = require('./config/db'); // get db config file
 var port        = process.env.PORT || 3030;
 // Pass passport for configuration
-var auth = require('./config/passport')(passport);
+var auth        = require('./config/passport')(passport);
 
 var user        = require('./app/routes/user');
-var authenticate = require('./app/routes/authenticate');
+var authenticate= require('./app/routes/authenticate');
  
 // get our request parameters
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -49,11 +52,20 @@ app.use('/api', user);
 app.use('/api', authenticate);
 
 // Start the server
-app.listen(port);
+// Listen application request on port 3000
+server.listen(port);
 
 // Route for test 
 app.get('/', function(req, res) {
   res.send('Klick n GO API is at http://localhost:' + port + '/api');
 });
+
+/** Chat application  */
+app.get('/chat', function(req, res){
+  res.sendfile('index.html');
+});
+
+/** socket */
+require('./app/utils/socket')(io);
 
 console.log('Klick n GO : http://localhost:' + port);
