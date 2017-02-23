@@ -24,29 +24,47 @@ router.route('/users')
             //handleError(res, "Invalid user input", "Must provide a first or last name.", 400);
             res.status(400).json(new Response(400, false, "", "Must provide a first or last name."));
             return;
+        } else if(!req.body.mobile) {
+            res.status(400).json(new Response(400, false, "", "Must provide a mobile."));
+            return;
         }
-		var user = new User({
-			firstName: req.body.firstName,
-			lastName: req.body.lastName,
-			password: req.body.password,
-			mobile: req.body.mobile,
-            gender: req.body.gender,
-            dateOfBirth: req.body.dateOfBirth,
-            city: req.body.city,
-            country: req.body.country,
-            shopName: req.body.shopName,
-            workingHour: req.body.workingHour,
-            userType: req.body.userType,
-            created: new Date()
-        });
-		// save the data
-		user.save(function (err) {
+        User.count({mobile: req.body.mobile}, function(err, count){
             if (err) {
-                res.status(500).send(err);
+            	res.status(500).json(new Response(500, false, "", err));
                 return;
             }
-            res.json(new Response(200, true, user, "User added."));
+            console.log( "Number of docs: ", count );
+            if(count <= 0) {
+                var user = new User({
+                    firstName: req.body.firstName,
+                    lastName: req.body.lastName,
+                    password: req.body.password,
+                    mobile: req.body.mobile,
+                    gender: req.body.gender,
+                    dateOfBirth: req.body.dateOfBirth,
+                    city: req.body.city,
+                    country: req.body.country,
+                    shopName: req.body.shopName,
+                    workingHour: req.body.workingHour,
+                    userType: req.body.userType,
+                    created: new Date()
+                });
+                // save the data
+                user.save(function (err) {
+                    if (err) {
+                        res.status(500).json(new Response(500, false, "", err));
+                        return;
+                    }
+                    res.json(new Response(200, true, user, "User added."));
+                });
+            } else {
+                res.status(400).json(new Response(400, false, "", "Mobile is already taken."));
+                return;
+            }
+
+
         });
+		
 	});
 
 router.route("/users/:id")

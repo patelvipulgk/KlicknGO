@@ -13,6 +13,7 @@ var port        = process.env.PORT || 3030;
 var auth        = require('./config/passport')(passport);
 
 var user        = require('./app/routes/user');
+var contact        = require('./app/routes/contact');
 var authenticate= require('./app/routes/authenticate');
  
 // get our request parameters
@@ -50,7 +51,7 @@ getToken = function (headers) {
 app.use('/api', apiRoutes);
 app.use('/api', user);
 app.use('/api', authenticate);
-
+app.use('/api', contact);
 // Start the server
 // Listen application request on port 3000
 server.listen(port);
