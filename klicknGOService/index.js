@@ -14,6 +14,7 @@ var auth        = require('./config/passport')(passport);
 
 var user        = require('./app/routes/user');
 var contact        = require('./app/routes/contact');
+var conversation        = require('./app/routes/conversation');
 var authenticate= require('./app/routes/authenticate');
  
 // get our request parameters
@@ -52,6 +53,7 @@ app.use('/api', apiRoutes);
 app.use('/api', user);
 app.use('/api', authenticate);
 app.use('/api', contact);
+app.use('/api', conversation);
 // Start the server
 // Listen application request on port 3000
 server.listen(port);

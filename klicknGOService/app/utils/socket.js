@@ -14,27 +14,30 @@ function socket(io) {
             var should_add = true;
             console.log("User length :" + users.length);
             if (users.length == 0) {
+                //userinfo = JSON.parse(userinfo);
                 userinfo.socketId = socket.id;
+                console.log(userinfo.id + userinfo.mobile + socket.id);
                 users.push(userinfo);
             } else {
                 users.forEach(function(element, index, array) {
                     if (element.id == userinfo.id) {
-                        should_add = false;
+                            should_add = false;
                     }
                 });
                 if (should_add) {
                     userinfo.socketId = socket.id;
                     users.push(userinfo);
-                };
+                }
             }
+            console.log(JSON.stringify(userinfo));
             /** Sending list of users to all users */
-            users.forEach(function(element, index, array) {
+            /*users.forEach(function(element, index, array) {
                 io.to(element.socketId).emit('userEntrance', users);
                 console.log("===================================================" + index + JSON.stringify(array));
                 console.log("Socket Id : " + element.socketId + JSON.stringify(users));
-            });
+            });*/
             should_add = true;
-            // io.to(userinfo.socketId).emit('userEntrance', userinfo);
+            io.to(userinfo.socketId).emit('userEntrance', userinfo);
         });
 
 

@@ -164,7 +164,6 @@ var conv = {
                     // helper function
                     var check = function() {
                         if (totaltasks == tasksfinished) {
-                            console.log("Conversation Replay : " + JSON.stringify(conversation));
                             callback(conversation);
                         }
                     }
@@ -183,7 +182,53 @@ var conv = {
 
                 });
         });
+    },
+    getLatestConverstion: function(userId, callback) {
+        Conversation.aggregate([
+            { $match: {
+                from_id: userId
+            }},
+            { $group: {
+                _id: "$con_id"
+                }},
+            { "$sort": { "created_at": -1 
+            }}
+        ], function (err, result) {
+            if (err) throw err;
+            var totaltasks = result.length;
+            var tasksfinished = 0;
+            // helper function
+            var check = function() {
+                if (totaltasks == tasksfinished) {
+                    console.log("Conversation Replay : " + JSON.stringify(result));
+                    callback(result);
+                }
+            };
+            for(let i = 0; i < result.length; i++) {
+                console.log(result[i]._id);
+                ConversationReply.findOne({ con_id: result[i]._id })
+                    .sort('-created_at')
+                    .exec(function(err, conversationReply) {
+                        if (err) throw err;
+                        var conversation = JSON.parse(JSON.stringify(conversationReply));
+                        // helper function
+                        conv.getUserInfo(conversation.from_id, function(UserInfo) {
+                            result[i]['name'] = UserInfo.fname + ' ' + UserInfo.lname;
+                            result[i]['thumb'] = UserInfo.thumbnail;
+                            result[i]['gender'] = UserInfo.gender;
+                            result[i]['msg'] = conversation.reply;
+                            result[i]['con_id'] = conversation.con_id;
+                            result[i]['to_id'] = conversation.to_id;
+                            result[i]['from_id'] = conversation.from_id;
+                            tasksfinished++;
+                            check();
+                        });
+                            
+                    });
+            }
+         
+    });
     }
-}
+};
 
 module.exports = conv;
