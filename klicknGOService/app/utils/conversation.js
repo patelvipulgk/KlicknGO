@@ -196,7 +196,11 @@ var conv = {
         ], function (err, result) {
             if (err) throw err;
             var totaltasks = result.length;
+            console.log("dfdfdfs" + totaltasks);
             var tasksfinished = 0;
+            if(totaltasks === 0) {
+                callback(result);
+            }
             // helper function
             var check = function() {
                 if (totaltasks == tasksfinished) {
