@@ -1,4 +1,6 @@
 var helper = require('../utils/conversation');
+var productUtil = require('../utils/product');
+var Product = require('../models/product');
 var method = socket.prototype;
 var users = [];
 
@@ -124,6 +126,16 @@ function socket(io) {
             helper.getHistory(data, start, limit, function(conversation) {
                 io.to(data.socket_id).emit('getHistory', conversation);
             });
+        });
+
+        /** Send product */
+        socket.on('sendProduct', function(data){
+            console.log('Send product' + JSON.stringify(data));
+            productUtil.saveProduct(data, function(productRes) {
+                console.log(productRes);
+                //io.to(data.socket_id).emit('getHistory', conversation);
+            });
+
         });
     });
 }

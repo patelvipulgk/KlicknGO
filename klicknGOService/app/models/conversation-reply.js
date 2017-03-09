@@ -11,6 +11,11 @@ var conversationReplySchema = new Schema({
     to_id_read: {type: Number, default: 0},
     from_id_del: {type: Number, default: 0},
     to_id_del: {type: Number, default: 0},
+    type: {
+        type: String,
+        enum: ['PRODUCT', 'DAFAULT'],
+        default: 'DAFAULT'
+    },
 	created_at: {
         type: Date,
         default: Date.now

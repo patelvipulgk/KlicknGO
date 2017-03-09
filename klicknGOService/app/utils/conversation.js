@@ -20,7 +20,7 @@ var conv = {
             } else {
                 //data for callback 
                 is_present = false;
-                con_id = 0
+                con_id = 0;
             }
             callback({
                 is_present: is_present,
@@ -66,6 +66,7 @@ var conv = {
             /** Save msg in converstion reply */
             conv.insertMsg(data, function(is_insert_msg) {
                 callback({
+                    conversationId: is_insert_conversation,
                     msg: data.msg,
                     from_id: data.from_id,
                     to_id: data.to_id,

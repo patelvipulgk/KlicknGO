@@ -6,6 +6,14 @@
       var socket = io();
         function setUsername(){
             socket.emit('setUsername', document.getElementById('name').value);
+            var data={
+						socket_id:"1",
+						to_id:"58bb9b51a4e9f62978ad3fd3",
+						from_id:"58bb9bb0a4e9f62978ad3fd4",
+						msg:"",
+                        product: [{'item': 'Pepsi'},{'item': 'Coco'}]
+					};
+            socket.emit('sendProduct', data);
         };
         var user;
         socket.on('userExists', function(data){
@@ -28,6 +36,7 @@
                 document.getElementById('message-container').innerHTML += '<div><b>' + data.user + '</b>: ' + data.message + '</div>'
             }
         })
+        
     </script>
     <body>
         <div id="error-container"></div>
