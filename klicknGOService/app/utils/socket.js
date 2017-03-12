@@ -63,6 +63,7 @@ function socket(io) {
         socket.on('sendMsg', function(data_server) {
             console.log('Data Server : ' + data_server);
             /** Calling saveMsgs to save messages into DB */
+            data.type = "DAFAULT";
             helper.saveMsgs(data_server, function(result) {
                 console.log(result);
                 console.log('Get msg : ' + data_server.socket_id);
@@ -129,13 +130,20 @@ function socket(io) {
         });
 
         /** Send product */
-        socket.on('sendProduct', function(data){
-            console.log('Send product' + JSON.stringify(data));
-            productUtil.saveProduct(data, function(productRes) {
-                console.log(productRes);
-                //io.to(data.socket_id).emit('getHistory', conversation);
+        socket.on('sendProduct', function(product){
+            console.log('Send product' + JSON.stringify(product));
+            productUtil.saveProduct(product, function(productRes) {
+                io.to(data.socket_id).emit('getProduct', product);
             });
 
+        });
+
+        /** Send Order */
+        socket.on('sendOrder', function(order) {
+            console.log('Send Order' + JSON.stringify(order));
+            productUtil.saveOrder(order, function(orderRes) {
+                
+            });
         });
     });
 }

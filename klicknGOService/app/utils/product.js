@@ -11,8 +11,8 @@ var productUtil = {
     });
   },
   saveProduct: function (data, callback) {
+    data.type = "PRODUCT";
     conversationUtil.saveMsgs(data, function (result) {
-      data.type = "PRODUCT";
       console.log('Conversion Data :' + JSON.stringify(result));
       var items = data.product;
       var totaltasks = items.length;

@@ -49,7 +49,8 @@ var conv = {
             reply: data.msg,
             from_id: data.from_id,
             to_id: data.to_id,
-            con_id: data.con_id
+            con_id: data.con_id,
+            type: data.type
         });
 
         // save the user
@@ -100,6 +101,7 @@ var conv = {
             });
     },
     saveMsgs: function(data, callback) {
+        console.log("Data : " + JSON.stringify(data));
         var checkData = { to_id: data.to_id, from_id: data.from_id };
         /** Checking coverstion already availble or not*/
         conv.isConversationPresent(checkData, function(isPresent) {
@@ -110,14 +112,15 @@ var conv = {
                     to_id: data.to_id,
                     from_id: data.from_id,
                     msg: data.msg,
-                    con_id: isPresent.con_id
+                    con_id: isPresent.con_id,
+                    type: data.type
                 };
 
                 /** Insert message and conversation */
                 conv.callMsgAfterConversation(msg_after_conversation, function(insert_con_msg) {
                     conv.getUserInfo(data.from_id, function(UserInfo) {
-                        insert_con_msg.name = UserInfo.fname + ' ' + UserInfo.lname;
-                        insert_con_msg.thumb = UserInfo.thumbnail;
+                        insert_con_msg.name = UserInfo.firstName + ' ' + UserInfo.lastName;
+                        //insert_con_msg.thumb = UserInfo.thumbnail;
                         insert_con_msg.gender = UserInfo.gender;
                         callback(insert_con_msg);
                     });
@@ -132,14 +135,15 @@ var conv = {
                         to_id: data.to_id,
                         from_id: data.from_id,
                         msg: data.msg,
-                        con_id: con_id.ID
+                        con_id: con_id.ID,
+                        type: data.type
                     };
 
                     /** Insert message and conversation */
                     conv.callMsgAfterConversation(msg_after_conversation, function(insert_con_msg) {
                         conv.getUserInfo(data.from_id, function(UserInfo) {
-                            insert_con_msg.name = UserInfo.fname + ' ' + UserInfo.lname;
-                            insert_con_msg.thumb = UserInfo.thumbnail;
+                            insert_con_msg.name = UserInfo.firstName + ' ' + UserInfo.lastName;
+                            //insert_con_msg.thumb = UserInfo.thumbnail;
                             insert_con_msg.gender = UserInfo.gender;
                             callback(insert_con_msg);
                         });
@@ -171,8 +175,8 @@ var conv = {
                     for (var i = 0; i < conversation.length; i++) {
                         (function(i) {
                             conv.getUserInfo(conversation[i].from_id, function(UserInfo) {
-                                conversation[i]['name'] = UserInfo.fname + ' ' + UserInfo.lname;
-                                conversation[i]['thumb'] = UserInfo.thumbnail;
+                                conversation[i]['name'] = UserInfo.firstName + ' ' + UserInfo.lastName;
+                                //conversation[i]['thumb'] = UserInfo.thumbnail;
                                 conversation[i]['gender'] = UserInfo.gender;
                                 conversation[i]['msg'] = conversation[i]['reply'];
                                 tasksfinished++;
@@ -218,8 +222,8 @@ var conv = {
                         var conversation = JSON.parse(JSON.stringify(conversationReply));
                         // helper function
                         conv.getUserInfo(conversation.from_id, function(UserInfo) {
-                            result[i]['name'] = UserInfo.fname + ' ' + UserInfo.lname;
-                            result[i]['thumb'] = UserInfo.thumbnail;
+                            result[i]['name'] = UserInfo.firstName + ' ' + UserInfo.lastName;
+                            //result[i]['thumb'] = UserInfo.thumbnail;
                             result[i]['gender'] = UserInfo.gender;
                             result[i]['msg'] = conversation.reply;
                             result[i]['con_id'] = conversation.con_id;
