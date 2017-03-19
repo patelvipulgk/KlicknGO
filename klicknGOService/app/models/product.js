@@ -4,7 +4,6 @@ var Schema = mongoose.Schema;
 // create a schema
 var productSchema = new Schema({
     name: String,
-    availability: Boolean,
     conversationId: String
 },{
 timestamps: true

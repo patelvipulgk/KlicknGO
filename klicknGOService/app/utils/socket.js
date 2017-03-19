@@ -1,6 +1,6 @@
 var helper = require('../utils/conversation');
 var productUtil = require('../utils/product');
-var Product = require('../models/product');
+var orderUtil = require('../utils/order');
 var method = socket.prototype;
 var users = [];
 
@@ -63,7 +63,7 @@ function socket(io) {
         socket.on('sendMsg', function(data_server) {
             console.log('Data Server : ' + data_server);
             /** Calling saveMsgs to save messages into DB */
-            data.type = "DAFAULT";
+            data_server.type = "DAFAULT";
             helper.saveMsgs(data_server, function(result) {
                 console.log(result);
                 console.log('Get msg : ' + data_server.socket_id);
@@ -133,7 +133,8 @@ function socket(io) {
         socket.on('sendProduct', function(product){
             console.log('Send product' + JSON.stringify(product));
             productUtil.saveProduct(product, function(productRes) {
-                io.to(data.socket_id).emit('getProduct', product);
+                console.log(productRes);
+                io.to(data.socket_id).emit('getMsg', productRes);
             });
 
         });
@@ -141,8 +142,9 @@ function socket(io) {
         /** Send Order */
         socket.on('sendOrder', function(order) {
             console.log('Send Order' + JSON.stringify(order));
-            productUtil.saveOrder(order, function(orderRes) {
-                
+            orderUtil.saveOrder(order, function(orderRes) {
+                console.log(orderRes);
+                io.to(data.socket_id).emit('getMsg', orderRes);
             });
         });
     });

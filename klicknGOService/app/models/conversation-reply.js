@@ -13,7 +13,7 @@ var conversationReplySchema = new Schema({
     to_id_del: {type: Number, default: 0},
     type: {
         type: String,
-        enum: ['PRODUCT', 'DAFAULT'],
+        enum: ['PRODUCT', 'DAFAULT', 'ORDER'],
         default: 'DAFAULT'
     },
 	created_at: {

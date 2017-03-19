@@ -71,6 +71,7 @@ var conv = {
                     msg: data.msg,
                     from_id: data.from_id,
                     to_id: data.to_id,
+                    type:is_insert_msg.type
                 });
             });
         });

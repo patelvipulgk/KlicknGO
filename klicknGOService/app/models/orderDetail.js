@@ -6,7 +6,8 @@ var orderDetailSchema = new Schema({
     productId: String,
     quantity: String,
     orderId: String,
-    price: String
+    price: String,
+    availability: Boolean,
 },{
 timestamps: true
 });

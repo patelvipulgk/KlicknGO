@@ -6,14 +6,37 @@
       var socket = io();
         function setUsername(){
             socket.emit('setUsername', document.getElementById('name').value);
+            
+             var data={ 
+  msg: '',
+  from_id: '58bb9bb0a4e9f62978ad3fd4',
+  to_id: '58bb9b51a4e9f62978ad3fd3',
+  type: 'ORDER',
+  product:
+   [ { 
+       name: 'Pepsi',
+       _id: '58ce7f50b895503bd499faba',
+       availability: true
+     },
+     { 
+       name: 'Coco',
+       _id: '58ce7f50b895503bd499fabb',
+    availability: false } ],
+    total:500,
+type:'ORDER' };
+console.log(JSON.stringify(data));
+            socket.emit('sendOrder', data);
             var data={
 						socket_id:"1",
 						to_id:"58bb9b51a4e9f62978ad3fd3",
 						from_id:"58bb9bb0a4e9f62978ad3fd4",
 						msg:"",
-                        product: [{'item': 'Pepsi'},{'item': 'Coco'}]
+                        product: [{'name': 'Pepsi'},{'name': 'Coco'}],
+                        type : "PRODUCT"
+    
 					};
-            socket.emit('sendProduct', data);
+
+            //socket.emit('sendProduct', data);
         };
         var user;
         socket.on('userExists', function(data){
